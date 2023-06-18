@@ -9,8 +9,6 @@ import { EditUserDto, LoginDto, SignupDto } from './dto';
 import * as argon from 'argon2';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { User } from '@prisma/client';
-import axios from 'axios';
 @Injectable()
 export class AuthService {
   constructor(
@@ -132,8 +130,6 @@ export class AuthService {
           success: false,
         });
       }
-
-      console.log(userId);
 
       const userToUpdate = await this.prisma.user.update({
         where: {
